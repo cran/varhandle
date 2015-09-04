@@ -1,0 +1,17 @@
+cbac3307b272a434cbd203c6c0b18194 *DESCRIPTION
+f0546a4dec0c37a4bce7b831d74ee28e *NAMESPACE
+2027d55d2918bb213869f74132d89b72 *R/check.numeric.R
+28a1cf122e56f3a6a48b9a0b957924a3 *R/pin.na.R
+55a1466ea261ae8d477d648763619df0 *R/rm.all.but.R
+2f85f5faad3c0095653ccccf56df4e73 *R/save.var.R
+b7835258a34e226f5ea4828561f21fae *R/to.dummy.R
+ab16742667cdc22b43d6107201629cba *R/unfactor.R
+f385f99401c36a4afed5a0c9bc2e99dd *R/var.info.R
+811037e745b83f6335e2e663d0f32720 *man/check.numeric.Rd
+0edf7816682376069c8e1ad7378c16d7 *man/pin.na.Rd
+97197b8b43cb8a53d6fa9ffe2037c1ed *man/rm.all.but.Rd
+b69fee8fc6749717265c9198a5b15504 *man/save.var.Rd
+3dc09a4a3aaa24daf11cc1afa1e92dab *man/to.dummy.Rd
+6557cd33a5d72f1291b052a755cd0579 *man/unfactor.Rd
+5f7cc5537cda2e037e51939363a792fd *man/var.info.Rd
+36ef28fda587578019417a890b5c3c88 *man/varhandle-package.Rd
