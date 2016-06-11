@@ -12,8 +12,8 @@
     \tabular{ll}{
     Package: \tab varhandle\cr
     Type: \tab Package\cr
-    Version: \tab 1.0\cr
-    Date: \tab 2015-08-14\cr
+    Version: \tab 2.0\cr
+    Date: \tab 2016-04-14\cr
     License: \tab GPL (>=2)\cr
     }
     ~~ An overview of how to use the package, including the most important ~~

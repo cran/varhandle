@@ -1,2 +1,4 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("utils", "object.size")
+importFrom("utils", "object.size", "lsf.str")
+importFrom("graphics", "abline", "layout", "legend", "par", "plot.new",
+             "strwidth", "text")

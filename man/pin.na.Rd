@@ -4,7 +4,9 @@
 \title{Pinpoint NAs in a vector, matrix or data.frame}
 \description{
     %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-    This function provides a list of locations for each NA found in the variable.
+    This function finds NAs in a vector, data.frame or matrix and returns a
+    data.frame which contains two columns that includes the row number and column
+    number of each NA.
 }
 \usage{
     pin.na(x)
@@ -13,14 +15,14 @@
 \arguments{
     \item{x}{
         %%  ~~Describe \code{varlist} here~~
-        A vector, data.frame or matrix which you want to pinpoint NAs (Mandatory)
+        A vector, data.frame or matrix which you want to pinpoint its NAs (Mandatory)
     }
-    
+
 }
 \details{
     %%  ~~ If necessary, more details than the description above ~~
-    This function is a quick and easy way to locate and pinpoint NAs in a given vector, data.frame or matrix.
-    %% This function is also used in \code{\link{summary.na}} function of this package.
+    This function provides a quick and easy way to locate and pinpoint NAs in a given vector, data.frame or matrix.
+    This function is also used in \code{\link{inspect.na}} function of this package.
 }
 \value{
     %%  ~Describe the value returned
@@ -28,13 +30,14 @@
     %%  \item{comp1 }{Description of 'comp1'}
     %%  \item{comp2 }{Description of 'comp2'}
     %% ...
-    If a vector is given, the index of NAs will be returned in a numeric vector format. In case of a given matrix or data.frame the function will return a data.frame with two columns, one indicating the row and one indicating the column number, each row will be location of a NA.
+    If a vector is given, the index of NAs will be returned in a numeric vector format. In case of a given matrix or data.frame the function will return a data.frame with two columns, one indicating the row number and one indicating the column number. Each row will represent a location of a NA.
+    In case no NA is found, the function will return NULL which makes it easy to use in if conditions using \code{\link{is.null}}.
 }
 %%\references{
     %% ~put references to the literature/web site here ~
 %%}
 \author{
-%%  ~~who you are~~
+  %%~~who you are~~
 	Mehrad Mahmoudian
 }
 %%\note{
@@ -56,7 +59,7 @@
     var1[runif(7, 1,30)] <- NA
     # pinpoint NAs
     pin.na(var1)
-    
+
     # create a matrix
     var2 <- matrix(runif(100, 10, 99), nrow=10)
     # add NA at random places

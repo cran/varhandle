@@ -13,13 +13,13 @@ unfactor <- function(obj=NULL){
         # if the provided object was not a data.frame, matrix or fector vector, throw an error.
         stop(paste("Please provide the obj which can be a matrix, data.frame or a vector. The provided obj has the class of", class(obj)))
     }
-    
+
     #----[ processing ]----#
     # if the obj is a factor vector
     if(class(obj)=="factor"){
         obj <- as.character(obj)
         # check if there is nothing but numbers
-        if(check.numeric(v=obj, rm.na=FALSE)){
+        if(check.numeric(v=obj, na.rm=FALSE)){
             # everything is numbers, so change it to numeric
             obj <- as.numeric(obj)
         }
@@ -31,15 +31,14 @@ unfactor <- function(obj=NULL){
         obj[factor_columns_indecies] <- lapply(obj[factor_columns_indecies], function(x){
             x <- as.character(x)
             # check if there is nothing but numbers
-            if(check.numeric(v=x, rm.na=FALSE)){
+            if(check.numeric(v=x, na.rm=FALSE)){
                 # everything is numbers, so change it to numeric
                 x <- as.numeric(x)
             }
             return(x)
         })
     }
-    
+
     # return the result
     return(obj)
 }
-
