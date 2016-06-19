@@ -16,8 +16,8 @@
     Date: \tab 2016-04-14\cr
     License: \tab GPL (>=2)\cr
     }
-    ~~ An overview of how to use the package, including the most important ~~
-    ~~ functions ~~
+%    ~~ An overview of how to use the package, including the most important ~~
+%    ~~ functions ~~
 }
 \author{
     Mehrad Mahmoudian [aut, cre]

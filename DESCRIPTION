@@ -1,6 +1,6 @@
 Package: varhandle
-Version: 2.0.0
-Date: 2016-06-10
+Version: 2.0.1
+Date: 2016-06-19
 Title: Functions for Robust Variable Handling
 Authors@R: c(person("Mehrad", "Mahmoudian", role = c("aut", "cre"),
 		     email = "m.mahmoudian@gmail.com"))
@@ -14,6 +14,6 @@ License: GPL (>= 2)
 URL: https://bitbucket.org/mehrad_mahmoudian/varhandle
 BugReports: https://bitbucket.org/mehrad_mahmoudian/varhandle/issues
 NeedsCompilation: no
-Packaged: 2016-06-11 11:37:12 UTC; mehu
+Packaged: 2016-06-19 14:00:21 UTC; mehu
 Repository: CRAN
-Date/Publication: 2016-06-11 14:19:52
+Date/Publication: 2016-06-19 16:46:39

@@ -1,13 +1,14 @@
-1babe4cdcc05c337bcf01258db64570c *DESCRIPTION
+73dd918641ef0f20509b8d1e326ddb06 *DESCRIPTION
 ae9946e0a519482dd36da06a9d594c06 *NAMESPACE
+2c3a046a698c4a463db16ba064447b51 *NEWS
 464d82ea93a85054816acd69bb34b5d9 *R/check.numeric.R
-39ebd43f36afc9fb914635ec713de736 *R/inspect.na.R
+f0eea2ea76823881321fa9430be5ac5a *R/inspect.na.R
 de0f190b24df987665f177738743e135 *R/pin.na.R
 6cb40389a5de540349e65ed7eccc4f9e *R/rm.all.but.R
 2f85f5faad3c0095653ccccf56df4e73 *R/save.var.R
 b7835258a34e226f5ea4828561f21fae *R/to.dummy.R
-d4173e65a984f8d4fa5295cc0decb27a *R/unfactor.R
-f385f99401c36a4afed5a0c9bc2e99dd *R/var.info.R
+aa86c4d99bef60168f673ac1d9ca7507 *R/unfactor.R
+63d9e85c751a88182a8122dbf793180f *R/var.info.R
 63d1b86b95ef1ebb9cd4b24803bf3823 *man/check.numeric.Rd
 8b9eae38738de8e61d074383deb40fa4 *man/inspect.na.Rd
 1e57af77037694beed7b93579eebc32e *man/pin.na.Rd
@@ -16,4 +17,4 @@ b69fee8fc6749717265c9198a5b15504 *man/save.var.Rd
 3dc09a4a3aaa24daf11cc1afa1e92dab *man/to.dummy.Rd
 6557cd33a5d72f1291b052a755cd0579 *man/unfactor.Rd
 5f7cc5537cda2e037e51939363a792fd *man/var.info.Rd
-c57055543d349f8d34041f3a466fc79f *man/varhandle-package.Rd
+113ae32759e12832d438a9710ef30030 *man/varhandle-package.Rd

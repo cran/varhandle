@@ -3,9 +3,11 @@
 ##     either feature-wise (by column) or sample-wise (by row).
 
 inspect.na <- function(d, hist=FALSE, summary=TRUE, byrow=FALSE, barplot=TRUE){
-    if(!exists("d")){  # if the d was not defined by user
+    # if the d was not defined by user
+    if(missing("d")){
         stop("Please provide the d which can be a matrix or data.frame.")
-    }else if(class(d) %in% c("data.frame", "matrix")){  # if the data was provided, check the class of the provided data
+    # if the data was provided, check the class of the provided data
+    }else if(class(d) %in% c("data.frame", "matrix")){
         # use the pin.na function to pin the NAs
         pin.na.output <- pin.na(d)
 
