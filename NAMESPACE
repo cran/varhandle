@@ -1,4 +1,5 @@
 exportPattern("^[[:alpha:]]+")
-importFrom("utils", "object.size", "lsf.str")
+importFrom("utils", "object.size", "lsf.str", "getTxtProgressBar",
+           "setTxtProgressBar", "txtProgressBar")
 importFrom("graphics", "abline", "layout", "legend", "par", "plot.new",
              "strwidth", "text")

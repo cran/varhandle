@@ -11,8 +11,10 @@ inspect.na <- function(d, hist=FALSE, summary=TRUE, byrow=FALSE, barplot=TRUE){
         # use the pin.na function to pin the NAs
         pin.na.output <- pin.na(d)
 
-        if(!is.null(pin.na.output)){  # check if there is any NA
-            if(byrow){  # if user want to have the results row-wise
+        # check if there is any NA
+        if(!is.null(pin.na.output)){
+            # if user want to have the results row-wise
+            if(byrow){
                 # extract the rw column that contains the rows that contain NA
                 pin.na.output.rw <- pin.na.output[, "row_index"]
 
@@ -28,8 +30,8 @@ inspect.na <- function(d, hist=FALSE, summary=TRUE, byrow=FALSE, barplot=TRUE){
                                      row_name = row.names(d)[unique(pin.na.output.rw)],
                                      number_of_NAs = na.density,
                                      ratio_of_NA = na.ratio)
-
-            }else{  # if user want to have the results column-wise
+            # if user want to have the results column-wise
+            }else{
                 # extract the clmn column that contains the columns that contain NA
                 pin.na.output.clmn <- pin.na.output[, "column_index"]
 
@@ -59,6 +61,7 @@ inspect.na <- function(d, hist=FALSE, summary=TRUE, byrow=FALSE, barplot=TRUE){
 
             # if user wants to have barplot as well
             if(barplot){
+                ## construct a vector for colors
                 colorlist <- rep.int("gray", nrow(result))
                 colorlist[result$ratio_of_NA>0.1] <- "yellow"
                 colorlist[result$ratio_of_NA>0.3] <- "orange"
@@ -67,10 +70,14 @@ inspect.na <- function(d, hist=FALSE, summary=TRUE, byrow=FALSE, barplot=TRUE){
                 # create a backup from the user's current par() settings
                 default_par <- par(no.readonly = TRUE)
 
+                # set all the margins to zero
                 par(mar = c(0, 0, 0, 0))
-                layout(matrix(c(1, 2, 3), byrow = TRUE, ncol = 1), heights = c(1, 4, 0.7), widths = c(4))
+                # define the plan layout
+                layout(matrix(c(1, 2, 3), byrow = TRUE, ncol = 1),
+                       heights = c(1, 4, 0.7),
+                       widths = c(4))
 
-                # plot{1}
+                ## plot{1}
                 par(mar = c(0, 0, 0, 1))
                 plot.new()
                 # text(x = 0.5, y = 0.5, labels = "Missing values", cex = 2, font = 2)
@@ -85,7 +92,7 @@ inspect.na <- function(d, hist=FALSE, summary=TRUE, byrow=FALSE, barplot=TRUE){
                      cex = 2,
                      font = 2)
 
-                # plot{2}
+                ## plot{2}
                 # make label text perpendicular to axis and set the margins
                 par(las = 2, mar = c(8, 4, 0, 1))
                 barplot(result$ratio_of_NA,
@@ -98,7 +105,7 @@ inspect.na <- function(d, hist=FALSE, summary=TRUE, byrow=FALSE, barplot=TRUE){
                         ylab = "Ratio of NA",
                         # xlab = if(byrow){"Row Names"}else{"Column Names"})
                         xlab = "")
-                # draw lines for each cutoff
+                ## draw lines for each cutoff
                 abline(h = 0.5, col = "gray88", lty = 2)
                 abline(h = 0.3, col = "gray88", lty = 2)
                 abline(h = 0.2, col = "gray88", lty = 2)

@@ -1,3 +1,17 @@
+# varhandle 2.0.2
+
+###Changes to existing functions
+
+* `var.info()`
+    - Added progressbar and an argument to turn it on or off. Default is on.
+    - Fixed a bug that was returning a warning when user was providing more than one variable name.
+* `unfactor()`
+    - Fixed a bug that when a vector was fed, the function was retuning a warning. (now compatible with `_R_CHECK_LENGTH_1_CONDITION_`)
+* `rm.all.but()`
+    - Added the ability to auto detect and handle regular expression alone or in combination with varibale names, so that it is more convenient for user to keep variables based on regular expression as well.
+
+-------
+
 # varhandle 2.0.1
 
 ###Changes to existing functions

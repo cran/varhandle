@@ -8,7 +8,7 @@
 }
 \usage{
     var.info(list="ALL", envir=.GlobalEnv, human.readable=TRUE,
-             sortby="size", decreasing=TRUE, n=Inf)
+             sortby="size", decreasing=TRUE, n=Inf, progressbar = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -36,6 +36,9 @@
         %%  ~~Describe \code{varlist} here~~
         Number of desired rows in output If you want to have top 10, n should be equal to 10. If not specified the output will include all variables. (Optional)
     }
+    \item{progressbar}{
+        A Logical parameter indicating whether user wants to see progressbar or not. Default value is FALSE. See Details for more information.
+    }
 }
 \details{
     %%  ~~ If necessary, more details than the description above ~~
@@ -43,8 +46,10 @@
     class
     size (amount of memory the variable has occupied)
     detail (dimention for data.frame and matrices and length of vectors)
-    
+
     In case the variable is a matrix or data.frame, in detail column the dimention will be provided, if it is a vector, the length will be reported, otherwise you will see NA in detail column for that specific variable.
+
+    This function is usually very quick but in case of having many variables in the environment, it might take some time, hence a progressbar is implemented to inform user about the process.
 }
 \value{
     %%  ~Describe the value returned
@@ -86,8 +91,8 @@
     f <- lapply(5:10, function(x){paste("some random text:",
                                   paste0(letters[runif(5, 1, 26)],
                                   collapse=""))})
-    
-    
+
+
     # basic usage
     var.info()
     # the sorting

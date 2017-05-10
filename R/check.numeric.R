@@ -1,7 +1,5 @@
 ## Function Description:
 ##     A function to assess if a vector can be interpreted as numbers
-## ToDo
-##   * it can get a parameter to trim white space
 
 check.numeric <- function(v=NULL, na.rm=FALSE, only.integer=FALSE, exceptions=c(""), ignore.whitespace=TRUE){
     #----[ checking the input ]----#
