@@ -1,6 +1,25 @@
+# varhandle 2.0.3
+
+### Changes to existing functions
+
+* `rm.all.but()`
+    - Fixed a bug that was only expecting regular expression.
+* `pin.na()`
+    - Added the possibility to define the missingness character or value (can be more than one). So now user can define what should be concidered as missing value (e.g na.value = c(NA, " ", "."))
+* `inspect.na()`
+    - The added feature to `pin.na()` was also added to this function.
+    - Fixed the issue that the code was breaking if the given matrix didn't have columns names.
+* `check.numeric()`
+    - Fixed a bug that was returning TRUE when a numeric vector with some continuous was provided along with the flag `only.integer = TRUE`. Now the function checks the entire vector when it is of class numeric or integer and the flag `only.integer` is turned on.
+* `var.info()`
+    - Now support showing the dimention of object with class "Matrix" from a package with the same name in the detail column of the output.
+    - Now support showing the length of lists in the detail column of the output.
+
+-------
+
 # varhandle 2.0.2
 
-###Changes to existing functions
+### Changes to existing functions
 
 * `var.info()`
     - Added progressbar and an argument to turn it on or off. Default is on.
@@ -14,7 +33,7 @@
 
 # varhandle 2.0.1
 
-###Changes to existing functions
+### Changes to existing functions
 
 * `pin.na()`
     - Change the type of output to data.frame to make it easier to access

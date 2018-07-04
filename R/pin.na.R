@@ -3,11 +3,11 @@
 ##     data.frame which contains two columns that includes the row number and column
 ##     number of each NA.
 
-pin.na <- function(x=NULL){
+pin.na <- function(x = NULL, na.value = NA){
     #----[ checking the input ]----#
     {
         # check if user has not provided x argument
-        if(is.null(x)){
+        if (is.null(x)) {
             stop("Please provide parameter \"x\". It can be a matrix, data.frame or vector.")
         }
     }
@@ -15,8 +15,8 @@ pin.na <- function(x=NULL){
 
     #----[ pre-processing ]----#
     {
-        ## convert to character if it is vector
-        if(class(x)=="factor"){
+        ## convert to character if it is factor
+        if (class(x) == "factor") {
             x <- as.character(x)
         }
     }
@@ -24,29 +24,44 @@ pin.na <- function(x=NULL){
 
     #----[ processing ]----#
     {
+        ## count the NAs
+        # create an empty variable to be filled in the following for loop
+        missingness_index <- c()
+        # iterate through the items in na.value
+        for (i in na.value) {
+            # if i is NA
+            if (is.na(i)) {
+                missingness_index <- c(missingness_index, which(is.na(x)))
+            }else{
+                missingness_index <- c(missingness_index, which(x == i))
+            }
+        }
+        
+        
         # if x is either data.frame or matrix
-        if(class(x) %in% c("data.frame", "matrix")){
+        if (class(x) %in% c("data.frame", "matrix")) {
             # if the count of NA is not zero
-            if(length(tmp <- which(is.na(x)))!=0){
+            if (length(missingness_index) != 0) {
                 # get the column number
-                clmn <- (tmp %/% dim(x)[1])+1
+                clmn <- (missingness_index %/% dim(x)[1]) + 1
                 # get the row number
-                rw <- tmp %% dim(x)[1]
+                rw <- missingness_index %% dim(x)[1]
 
-                clmn[rw==0] <- clmn[rw==0]-1
-                rw[rw==0] <- dim(x)[1]
+                clmn[rw == 0] <- clmn[rw == 0] - 1
+                rw[rw == 0] <- dim(x)[1]
 
                 # create the output
-                output <- data.frame(row_index=rw, column_index=clmn)
+                output <- data.frame(row_index = rw, column_index = clmn)
             }else{
                 ## no NA was found
                 output <- NULL
             }
+            
         # if x is either numeric, integer or character vector
-        }else if(class(x) %in% c("numeric", "integer", "character")){
+        }else if (class(x) %in% c("numeric", "integer", "character")) {
             # if the count of NA is not zero
-            if(length(tmp <- which(is.na(x)))!=0){
-                output <- tmp
+            if (length(missingness_index) != 0) {
+                output <- missingness_index
             }else{
                 ## no NA was found
                 output <- NULL
