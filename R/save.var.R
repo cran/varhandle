@@ -62,38 +62,28 @@ save.var <- function(varlist = ls(envir = as.environment(.GlobalEnv)),
         	time.now <- format(Sys.time(), "%Y%m%d-%H%M%S")
         	if (length(newdirtag)) {
         		# Create new folder name with tag
-        		final.dir = paste(time.now, "-", newdirtag, sep = '')
+        		final.dir <- paste(time.now, "-", newdirtag, sep = '')
         	}else{
         		# Create new folder name without tag
-        		final.dir = time.now
+        		final.dir <- time.now
         	}
             # create the cirectory in the correct path
         	dir.create(file.path(path, final.dir))
+        }else{
+            # if user do not want to create a new folder, define the final folder as the path itself
+            final.dir <- ""
         }
-    }
 
-
-    #----[ hold current folder ]----#
-    {
-        # save current folder in a variable so that we set it back after the process is finished
-        user.wd <- getwd()
     }
 
 
     #----[ save variables ]----#
     {
-        # Switch to newly created directory
-        setwd(file.path(path, final.dir))
         # Write variables one by one in separate files.
         for (i in varlist) {
-            save(file = paste(i, ".RData"), list = i, envir = envir)
+            save(file = file.path(path, final.dir, paste0(i, ".RData")), list = i, envir = envir)
         }
     }
 
 
-    #----[ return to original folder ]----#
-    {
-        # Switch back to user's working directory
-        setwd(user.wd)
-    }
 }

@@ -43,9 +43,10 @@
     %%  \item{comp1 }{Description of 'comp1'}
     %%  \item{comp2 }{Description of 'comp2'}
     %% ...
-    The function return a logical vector. TRUE for all the elements in the given vector if they are safe to convert into numeric in R.
+    The function return a logical vector. TRUE for all the elements in the given vector if they are safe to be converted into numeric in R (does not turned into NA).
+    Remember that "" and "   " can be converted to numeric safely (without getting the "NAs introduced by coercion" error), but their value would be NA.
 
-    In case of a integer, numric or logical vector, the funstion simply returns aall TRUE logical vector.
+    In case of a integer, numric or logical vector, the function simply returns all TRUE logical vector.
 }
 %%\references{
 %%    ~put references to the literature/web site here ~
@@ -82,29 +83,36 @@
 
     # create a complicated vector
     b <- c("1", "2.2", "3.", ".4", ".5.", "..6", "seven", "00008",
-           "90000", "-10", "+11", "12-", "--13", "++14", NA, "",
-           " 7 ", "   ")
+       "90000", "-10", "+11", "12-", "--13", "++14", NA, "",
+       " 7 ", "   ", "8e2", "8.6e-10", "-8.6e+10", "e3")
+
     # show in propper format
-    print(data.frame(value=b, check.numeric=check.numeric(b)))
-    #      value check.numeric
-    # 1        1          TRUE
-    # 2      2.2          TRUE
-    # 3       3.          TRUE
-    # 4       .4          TRUE
-    # 5      .5.         FALSE
-    # 6      ..6         FALSE
-    # 7    seven         FALSE
-    # 8    00008          TRUE
-    # 9    90000          TRUE
-    # 10     -10          TRUE
-    # 11     +11          TRUE
-    # 12     12-         FALSE
-    # 13    --13         FALSE
-    # 14    ++14         FALSE
-    # 15    <NA>          TRUE
-    # 16                  TRUE
-    # 17      7           TRUE
-    # 18                  TRUE
+    print(data.frame(value=b, check.numeric=check.numeric(b), converted=as.numeric(b)))
+        #       value check.numeric converted
+        # 1         1          TRUE   1.0e+00
+        # 2       2.2          TRUE   2.2e+00
+        # 3        3.          TRUE   3.0e+00
+        # 4        .4          TRUE   4.0e-01
+        # 5       .5.         FALSE        NA
+        # 6       ..6         FALSE        NA
+        # 7     seven         FALSE        NA
+        # 8     00008          TRUE   8.0e+00
+        # 9     90000          TRUE   9.0e+04
+        # 10      -10          TRUE  -1.0e+01
+        # 11      +11          TRUE   1.1e+01
+        # 12      12-         FALSE        NA
+        # 13     --13         FALSE        NA
+        # 14     ++14         FALSE        NA
+        # 15     <NA>          TRUE        NA
+        # 16                   TRUE        NA
+        # 17       7           TRUE   7.0e+00
+        # 18                   TRUE        NA
+        # 19      8e2          TRUE   8.0e+02
+        # 20  8.6e-10          TRUE   8.6e-10
+        # 21 -8.6e+10          TRUE  -8.6e+10
+        # 22       e3         FALSE        NA
+
+    # remember that "" and "   " can be converted to numeric safely, but their value would be NA.
 }
 
 % Add one or more standard keywords, see file 'KEYWORDS' in the

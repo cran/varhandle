@@ -81,11 +81,11 @@ check.numeric <- function(v = NULL, na.rm = FALSE, only.integer = FALSE,
     {
         # if user wants to only detect integers
         if (only.integer) {
-            regexp_pattern <- "^(-|\\+)?\\d+$"
+            regexp_pattern <- "(^(-|\\+)?\\d+$)|(^(-|\\+)?(\\d*)e(-|\\+)?(\\d+)$)"
         # if user wants to detect all numbers
         }else{
             #regexp_pattern <- "^(-|\\+)?\\d+(\\.?\\d+)?$"
-            regexp_pattern <- "^(-|\\+)?((\\.?\\d+)|(\\d+\\.\\d+)|(\\d+\\.?))$"
+            regexp_pattern <- "(^(-|\\+)?((\\.?\\d+)|(\\d+\\.\\d+)|(\\d+\\.?))$)|(^(-|\\+)?((\\.?\\d+)|(\\d+\\.\\d+)|(\\d+\\.?))e(-|\\+)?(\\d+)$)"
         }
 
         # perform the regexp

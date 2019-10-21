@@ -1,3 +1,25 @@
+# varhandle 2.0.4
+
+### Changes to existing functions
+
+* `save.var()`
+    - Fixed a bug that was throwing error when user was setting the `newdir = FALSE`
+    - Fixed adding an extra whitespace in the final files right after the variable names and right before the file extension
+* `check.numeric()`
+    - Fixed [issue #3](https://bitbucket.org/mehrad_mahmoudian/varhandle/issues/3/checknumeric-doesnt-recognize-scientific). Added the ability to detect scientific numbers (e.g "8.6e-10")
+    - Fixed typos in the comments of the code
+* `unfactor()`
+    - Fixed [issue #2](https://bitbucket.org/mehrad_mahmoudian/varhandle/issues/2/wrong-replacement-of-values-in-function). If the provided object was a dataframe and only one column was a factor, the function was replacing the values of that column with only the first appearing level.
+    - Added an argument to suppress auto class conversion to let the user control if the autoconversion whould happen or everything should be returned as character [issue #1](https://bitbucket.org/mehrad_mahmoudian/varhandle/issues/1/unfactor-deletes-leading-zeros-and).
+    - Added an argument to control verbosity of the function. By default is it `verbose = FALSE`, but by setting it to `TRUE` you will get messages about different steps. This would be useful for debugging or using in pipelines.
+    - Now you can use the function on any vector or dataframe and it will not complain or change anything if it does not find any factors.
+* `var.info()`
+    - Fixed an issue that was caused by user providing an object that was not a character vector containing the variable name. It happened that users were providing matrix objects with size of few gigabytes and the function was trying to find the variable names from the matrix! Now the function complains if the provided object is not a character vector.
+    - Added an argument named `regex` to accept a valid regular expression as input and apply it on the list of variables. This is for example very useful when you want to only get the info of those variables that end with "_df" without listing all names manually.
+    - Added an argument named `beautify` that accepts boolean (TRUE/FALSE) with the default value of FALSE. At the moment this just adds a "[▼]" or "[▲]" to the begining of the name of the column that the sorting is based on. This feature is aiming to beautify the output and make it more user-friendly and eye-friendly. In future more details can be added to the output of the function by this. Let me know if you have any suggestions :)
+    
+
+
 # varhandle 2.0.3
 
 ### Changes to existing functions
@@ -12,7 +34,7 @@
 * `check.numeric()`
     - Fixed a bug that was returning TRUE when a numeric vector with some continuous was provided along with the flag `only.integer = TRUE`. Now the function checks the entire vector when it is of class numeric or integer and the flag `only.integer` is turned on.
 * `var.info()`
-    - Now support showing the dimention of object with class "Matrix" from a package with the same name in the detail column of the output.
+    - Now support showing the dimension of object with class "Matrix" from a package with the same name in the detail column of the output.
     - Now support showing the length of lists in the detail column of the output.
 
 -------
@@ -25,9 +47,9 @@
     - Added progressbar and an argument to turn it on or off. Default is on.
     - Fixed a bug that was returning a warning when user was providing more than one variable name.
 * `unfactor()`
-    - Fixed a bug that when a vector was fed, the function was retuning a warning. (now compatible with `_R_CHECK_LENGTH_1_CONDITION_`)
+    - Fixed a bug that when a vector was fed, the function was returning a warning. (now compatible with `_R_CHECK_LENGTH_1_CONDITION_`)
 * `rm.all.but()`
-    - Added the ability to auto detect and handle regular expression alone or in combination with varibale names, so that it is more convenient for user to keep variables based on regular expression as well.
+    - Added the ability to auto detect and handle regular expression alone or in combination with variable names, so that it is more convenient for user to keep variables based on regular expression as well.
 
 -------
 

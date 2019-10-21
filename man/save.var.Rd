@@ -55,11 +55,13 @@
 \examples{
 # generate variables dynamically
 lapply(letters, function(x){assign(x=x, value=rnorm(1), env=globalenv())})
-# simple usage
-save.var()
-# specify a listof variables with tag
-save.var(varlist=c("a","e","i","o","u"), newdirtag="just_vowels")
 
+    \dontrun{
+        # simple usage
+        save.var()
+        # specify a listof variables with tag
+        save.var(varlist=c("a","e","i","o","u"), newdirtag="just_vowels")
+    }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

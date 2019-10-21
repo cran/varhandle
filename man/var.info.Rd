@@ -7,37 +7,38 @@
     This function provides a detailed information of variables in the specified environment. If no environment and list of variables provided for the function, it will consider all existing variables in global environment.
 }
 \usage{
-    var.info(list="ALL", envir=.GlobalEnv, human.readable=TRUE,
-             sortby="size", decreasing=TRUE, n=Inf, progressbar = FALSE)
+    var.info(list="ALL", regex = NULL, envir=.GlobalEnv, human.readable=TRUE,
+             sortby="size", decreasing=TRUE, n=Inf, beautify = FALSE,
+             progressbar = FALSE)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
     \item{list}{
-        %%  ~~Describe \code{varlist} here~~
         A list of variables which you want to get information for. If not specified, it gets all variables (Optional)
     }
+    \item{regex}{
+        A regular expression to be applied on the list of variables. This is very useful for example when `list = "ALL"`. (Optional)
+    }
     \item{envir}{
-        %%  ~~Describe \code{varlist} here~~
-        The environment inwhich you want this function to be functional. (Optional)
+        The environment in which you want this function to be functional. (Optional)
     }
     \item{human.readable}{
-        %%  ~~Describe \code{varlist} here~~
         If you want to have the variable size in humar readable format (Kb, Mb, etc.). (Optional)
     }
     \item{sortby}{
-        %%  ~~Describe \code{varlist} here~~
         The name of a column that you wish to sort the output with. If not specified the result will be sorted by "size". Valid options are "name", "class", "size" or "detail". (Optional)
     }
     \item{decreasing}{
-        %%  ~~Describe \code{varlist} here~~
-        A logical parameter indicating that you want the sort to be done decreasingly or  increasingly. If not specified it is TRUE. (Optional)
+        A logical parameter (TRUE/FALSE) indicating that you want the sort to be done decreasingly or  increasingly. If not specified it is TRUE. (Optional)
     }
     \item{n}{
-        %%  ~~Describe \code{varlist} here~~
         Number of desired rows in output If you want to have top 10, n should be equal to 10. If not specified the output will include all variables. (Optional)
     }
+    \item{beautify}{
+        A Logical parameter indicating whether the output should beautified. At the moment it just adds a up/down triangle in the column name, showing the sort direction and based which column the table is sorted. Default value is FALSE. See Details for more information. (optional)
+    }
     \item{progressbar}{
-        A Logical parameter indicating whether user wants to see progressbar or not. Default value is FALSE. See Details for more information.
+        A Logical parameter indicating whether user wants to see progressbar or not. Default value is FALSE. See Details for more information. (optional)
     }
 }
 \details{
@@ -78,25 +79,35 @@
 }
 
 \examples{
-    ## generate some variables
+    ###### generate some variables ######
     # a data.frame
     data(iris)
+    
     # some character vector
     for(i in 1:5){
         assign(letters[i], paste("some random text:",
                                  paste0(letters[runif(5, 1, 26)],
                                  collapse="")))
     }
+    
     # a list
     f <- lapply(5:10, function(x){paste("some random text:",
                                   paste0(letters[runif(5, 1, 26)],
                                   collapse=""))})
 
 
+    ###### demo of this function ######
     # basic usage
     var.info()
+    
     # the sorting
     var.info(sortby="name", decreasing=FALSE)
+    
+    # select using regular expression
+    var.info(regex="^i")
+    
+    # having the top 5 objects that use most memory in a beautified output
+    var.info(n=5, sortby="size", decreasing=TRUE, beautify=TRUE)
 
 }
 
