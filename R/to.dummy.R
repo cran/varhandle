@@ -24,7 +24,7 @@ to.dummy <- function(v = NULL, prefix = NULL){
     #----[ pre-processing ]----#
     {
         ## convert to character vector if the input is factor
-        if (class(v) == "factor") {
+        if (inherits(v, "factor")) {
             # get the levels of v
             v_levels <- levels(v)
             # convert the factor to character vector

@@ -1,3 +1,11 @@
+# varhandle 2.0.5
+
+This is a minor version and nothing has changed except supporting newer R which led to *removal* of this package from CRAN!! read more here:
+
+https://developer.r-project.org/Blog/public/2019/11/09/when-you-think-class.-think-again/index.html
+
+-------
+
 # varhandle 2.0.4
 
 ### Changes to existing functions
@@ -18,7 +26,7 @@
     - Added an argument named `regex` to accept a valid regular expression as input and apply it on the list of variables. This is for example very useful when you want to only get the info of those variables that end with "_df" without listing all names manually.
     - Added an argument named `beautify` that accepts boolean (TRUE/FALSE) with the default value of FALSE. At the moment this just adds a "[▼]" or "[▲]" to the begining of the name of the column that the sorting is based on. This feature is aiming to beautify the output and make it more user-friendly and eye-friendly. In future more details can be added to the output of the function by this. Let me know if you have any suggestions :)
     
-
+-------
 
 # varhandle 2.0.3
 
@@ -85,3 +93,35 @@
 * `inspect.na()`: This function is calls `pin.na()` and produce a human readable
                   data.frame of NA status of columns in addition to a barplot
                   and/or histogram.
+
+-------
+
+## varhandle 2.0.0
+
+### Changes to existing functions
+* `pin.na()`
+    - Change the type of output to data.frame to make it easier to access
+       via `$`
+    - Now returns NULL in case it does not find any NA. This change has
+       been done to make it easier to combine it with `is.NULL()`
+* `check.numeric()`
+    - The rm.na argument has changed to na.rm in order to make it similar
+       to the convention that other packages and functions are using.
+    - The function now detects `"-.2"`, `"3."`, `""` and NA as numbers as well.
+    - The default value of na.rm has changed to FALSE in order to take
+       NAs into account.
+    - An option added to ignore leading and tailing whitespace characters
+       from items in vector before assessing if they can be converted to
+       numeric.
+* `rm.all.but()`
+    - Added the ability to call garbage collection if the size of the
+       removed variables exceed the new parameter `gc_limit`.
+    - Added a new parameter `keep_functions` to automatically exclude all
+       functions from being removed.
+
+
+### New functions
+
+* `inspect.na()` : This function is calls pin.na and produce a human readable
+                data.frame of NA status of columns in addition to a barplot.
+

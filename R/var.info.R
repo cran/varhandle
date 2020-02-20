@@ -18,7 +18,7 @@ var.info <- function(list = "ALL", regex = NULL, envir = .GlobalEnv,
         {
             if (is.null(list)) {
                 stop("The parameter \"list\" should be defined. It should contain a list of variable names with the length of 1 or more.")
-            }else if (class(list) != "character") {
+            }else if (!inherits(list, "character")) {
                 stop('The parameter \"list\" should contain the name of variables you want to get their info in form of a character vector (put the names in "")')
             }else if (length(list) == 1) {
                 if (list == "ALL") {
@@ -95,7 +95,7 @@ var.info <- function(list = "ALL", regex = NULL, envir = .GlobalEnv,
         #-------[ n ]-------#
         {
             # check the n input
-            if (class(n) != "numeric" | n < 1 | length(n) != 1) {
+            if ((!inherits(n, "numeric")) | n < 1 | length(n) != 1) {
                 stop("The parameter \"n\" should be a single positive integer number more than zero.")
             }
         }
@@ -155,9 +155,9 @@ var.info <- function(list = "ALL", regex = NULL, envir = .GlobalEnv,
                                   collapse = ", "))
 
             ## get dim for matrix/dataframe
-            if (any(class(the.var) %in% c("data.frame", "matrix", "Matrix"))) {
+            if (inherits(the.var, c("data.frame", "matrix", "Matrix"))) {
                 var.detail <- c(var.detail, paste("dimension:", paste0(dim(the.var), collapse = ", ")))
-            }else if (class(the.var) %in% c("integer", "numeric", "character", "factor", "logical", "list")) {
+            }else if (inherits(the.var, c("integer", "numeric", "character", "factor", "logical", "list"))) {
                 var.detail <- c(var.detail, paste("length:", length(the.var)))
             }else{
                 var.detail <- c(var.detail, NA)

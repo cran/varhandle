@@ -9,7 +9,7 @@ inspect.na <- function(d, hist = FALSE, summary = TRUE, byrow = FALSE,
         stop("Please provide the d which can be a matrix or data.frame.")
         
     # if the data was provided, check the class of the provided data
-    }else if (class(d) %in% c("data.frame", "matrix")) {
+    }else if (inherits(d, c("data.frame", "matrix"))) {
         # use the pin.na function to pin the NAs
         pin.na.output <- pin.na(d, na.value = na.value)
 

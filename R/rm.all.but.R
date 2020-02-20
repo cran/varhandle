@@ -16,13 +16,13 @@ rm.all.but <- function(keep = NULL, envir = .GlobalEnv, keep_functions = TRUE,
         if (is.null(keep)) {
             stop("The parameter `keep` is not defined. It should be a chacter vector with length 1 or more.")
             # if the provided object for keep is not a character vector
-        } else if(class(keep) != "character") {
+        } else if(!inherits(keep, "character")) {
             stop("The parameter `keep` should be a chacter vector with length 1 or more.")
         }
 
 
         ## Check if the keep is a character vector
-        if (class(keep) != "character" | typeof(keep) != "character" ) {
+        if ((!inherits(keep, "character")) | typeof(keep) != "character" ) {
             stop("The value of `keep` parameter should be a chacter vector with length 1 or more.")
         }
 

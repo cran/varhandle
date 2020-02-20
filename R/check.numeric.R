@@ -16,9 +16,9 @@ check.numeric <- function(v = NULL, na.rm = FALSE, only.integer = FALSE,
           # complain
             stop("The parameter \"v\" is not defined. It can be character vector, numeric vector, factor vector or logical vector.")
         # if user has defined but the class is NOT character or factor
-        }else if (!class(v) %in% c("character", "factor")) {
+        }else if (!inherits(v, c("character", "factor"))) {
             # if the class is NOT numeric or integer either
-            if (!class(v) %in% c("numeric", "integer", "logical")) {
+            if (!inherits(v, c("numeric", "integer", "logical"))) {
                 # complain
                 stop("The parameter \"v\" can only be a character vector, numeric vector, factor vector or logical vector.")
             # if the class is numeric or integer
@@ -55,7 +55,7 @@ check.numeric <- function(v = NULL, na.rm = FALSE, only.integer = FALSE,
     #----[ pre-processing ]----#
     {
         # convert to character if it is vector
-        if (class(v) == "factor") {
+        if (inherits(v, "factor")) {
             # convert to character
             v <- as.character(v)
         }

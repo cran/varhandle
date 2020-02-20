@@ -10,9 +10,9 @@ unfactor <- function(obj = NULL, auto_class_conversion = TRUE, verbose = FALSE){
         # if the obj was not defined by user
         if (is.null(obj)) {
             stop("Please provide the obj which can be a matrix, data.frame or a vector.")
-        }else if (!any(class(obj) %in% c("data.frame", "matrix", "factor"))) {
+        }else if (!inherits(obj, c("data.frame", "matrix", "factor"))) {
             # if the provided object was not a data.frame, matrix or fector vector, throw an error.
-            stop(paste("Please provide the obj which can be a matrix, data.frame or a vector. The provided obj has the class of", class(obj)))
+            stop(paste("Please provide the obj which can be a matrix, data.frame or a vector. The provided obj has the class of", paste(class(obj), collapse = ", ")))
         }
     }
     
@@ -59,7 +59,7 @@ unfactor <- function(obj = NULL, auto_class_conversion = TRUE, verbose = FALSE){
         
         
         # if the obj is a factor vector
-        if (any(obj_class == "factor")) {
+        if (inherits(obj, "factor")) {
             # convert obj to character
             obj <- as.character(obj)
             # check if there is nothing but numbers

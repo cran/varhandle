@@ -16,7 +16,7 @@ pin.na <- function(x = NULL, na.value = NA){
     #----[ pre-processing ]----#
     {
         ## convert to character if it is factor
-        if (class(x) == "factor") {
+        if (inherits(x, "factor")) {
             x <- as.character(x)
         }
     }
@@ -39,7 +39,7 @@ pin.na <- function(x = NULL, na.value = NA){
         
         
         # if x is either data.frame or matrix
-        if (class(x) %in% c("data.frame", "matrix")) {
+        if (inherits(x, c("data.frame", "matrix"))) {
             # if the count of NA is not zero
             if (length(missingness_index) != 0) {
                 # get the column number
@@ -58,7 +58,7 @@ pin.na <- function(x = NULL, na.value = NA){
             }
             
         # if x is either numeric, integer or character vector
-        }else if (class(x) %in% c("numeric", "integer", "character")) {
+        }else if (inherits(x, c("numeric", "integer", "character"))) {
             # if the count of NA is not zero
             if (length(missingness_index) != 0) {
                 output <- missingness_index
