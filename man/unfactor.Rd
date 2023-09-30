@@ -13,7 +13,7 @@
 \arguments{
     \item{obj}{
         %%  ~~Describe \code{varlist} here~~
-        The factor vector, data.fram or matrix. (Mandatory)
+        The factor vector, data.frame or matrix. (Mandatory)
     }
     
     \item{auto_class_conversion}{
@@ -28,7 +28,7 @@
 }
 \details{
     %%  ~~ If necessary, more details than the description above ~~
-    This function turns factors to their real values. when a data.frame is given, the function detects factor columns and unfactor them, so you can give the whole data.frameand the function takes care of the rest.
+    This function turns factors to their real values. When a data.frame is given, the function detects factor columns and unfactor them, so you can give the whole data.frame and the function takes care of the rest.
     The values' real class detection mechanism is in a way that if everything in that column or vector are numbers and a decimal character, it change it to numeric otherwise it will be changed to character vector.
     This functionality can be turned off by setting the `auto_class_conversion` argument to FALSE
 }
@@ -69,7 +69,7 @@
     # see the actual values of the categorical column
     class(iris$Species)
     
-    # use vactor as input
+    # use vector as input
     species <- unfactor(iris$Species)
     # check the class
     class(species)

@@ -17,7 +17,7 @@
     }
     \item{prefix}{
         %%~~Describe \code{path} here~~
-        A character string to attach to the begining of the column names to prevent confusion or conflicts. (Mandatory)
+        A character string to attach to the beginning of the column names to prevent confusion or conflicts. (Mandatory)
     }
 }
 \details{

@@ -15,10 +15,10 @@
         Path to folder that you want to save the files in. If not provided, the current working directory will be used. (Optional)
     }
     \item{newdir}{
-        Logical vector of length 1 indicating whether you want to create a subdirectory to store your variable files in. This subdirectory will have the execution time (\%Y\%m\%d-\%H\%M\%S) as folder name in combination with a text tag (newdirtag) if provided. (Optional)
+        Logical vector of length 1 indicating whether you want to create a subdirectory to store your variable files in. This subdirectory will have the execution time (\%Y\%m\%d-\%H\%M\%S) as folder name in combination with a text tag (`newdirtag`) if provided. (Optional)
     }
     \item{newdirtag}{
-        Character string used in combination with newdir=TRUE to tag the time based folder name with a custom name. If not provided no tag will be used and the folder name will just have the time format. (Optional)
+        Character string used in combination with `newdir=TRUE` to tag the time based folder name with a custom name. If not provided no tag will be used and the folder name will just have the time format. (Optional)
     }
     \item{envir}{
         Character string providing target environment in R session. The default is the Global Environment. (Optional)
@@ -59,7 +59,7 @@ lapply(letters, function(x){assign(x=x, value=rnorm(1), env=globalenv())})
     \dontrun{
         # simple usage
         save.var()
-        # specify a listof variables with tag
+        # specify a list of variables with tag
         save.var(varlist=c("a","e","i","o","u"), newdirtag="just_vowels")
     }
 }

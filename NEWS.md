@@ -1,3 +1,13 @@
+# varhandle 2.0.6
+
+* Fixed some typos in the documentation
+* Fixed the issue related to not non-updated `man/varhandle-package.Rd`. Thanks to Kurt Hornik for pointing it out.
+
+### Changes to existing functions
+
+* `to.dummy()`
+    - Updated to use `inherits()` instead of comparing `class()` manually
+
 # varhandle 2.0.5
 
 This is a minor version and nothing has changed except supporting newer R which led to *removal* of this package from CRAN!! read more here:

@@ -20,7 +20,7 @@
     }
     
     \item{na.value}{
-        A vector containing the value that should be concidered as missing
+        A vector containing the value that should be considered as missing
         value. The default is NA, but you can add to it or change it to your
         preference. See the example. (Optional)
     }

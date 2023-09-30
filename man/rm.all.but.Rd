@@ -13,7 +13,7 @@
 %- maybe also 'usage' for other objects documented here.
 \arguments{
     \item{keep}{
-        A vector containing the name of variables which you wish to keep and not remove or a regular expression to match variables you want to keep. Variable names and regular expressions can be used combined if the argument `regex` is set to "auto". (Mandatory)
+        A vector containing the name of variables which you wish to keep and not remove or a regular expression to match variables you want to keep. Variable names and regular expressions can be used combined if the argument `regex="auto"`. (Mandatory)
     }
     \item{envir}{
         The environment that this function should be functional in, search in and act in. (Optional)
@@ -31,14 +31,14 @@
 \details{
     While working with R it happens that users generates an accumulate many variables and at some point they just want to keep some of them and remove the rest to make the workspace clean and reduce memory usage. This is where this function comes in to keep those variables user wants and remove the rest.
 
-    Two criteria can be used as filtering the varibales you wish to keep:
+    Two criteria can be used as filtering the variables you wish to keep:
 
     * variable names
     * regular expression
 
-    These can be also used in combination in any order. You can also have multiple regular expressions to match different varibale names.
+    These can be also used in combination in any order. You can also have multiple regular expressions to match different variable names.
 
-    The garbage collection will run if the size of removed variables exceed the gc_limit parameter and will tell R to give back the amount of occupied memory by removed variables to the system. This comes handy since usually removed variables are created temprorily and removing them should free up the memory.
+    The garbage collection will run if the size of removed variables exceed the `gc_limit` parameter and will tell R to give back the amount of occupied memory by removed variables to the system. This comes handy since usually removed variables are created temporarily and removing them should free up the memory.
 }
 %%\value{
 

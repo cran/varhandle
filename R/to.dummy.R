@@ -9,7 +9,7 @@ to.dummy <- function(v = NULL, prefix = NULL){
         # check if user has not provided prefix argument
         if (is.null(prefix)) {
             stop("The input \"prefix\" is missing. This will be added to the begining of each column name to avoid conflicts with other column names.")
-        }else if (length(prefix) != 1 | nchar(prefix) == 0 | class(prefix) != "character") {
+        }else if (length(prefix) != 1 | nchar(prefix) == 0 | !inherits(x = prefix, what = "character")) {
             stop("The input \"prefix\" should be a character vector with length of 1 and character number more than 0.")
         }
 

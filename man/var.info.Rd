@@ -23,7 +23,7 @@
         The environment in which you want this function to be functional. (Optional)
     }
     \item{human.readable}{
-        If you want to have the variable size in humar readable format (Kb, Mb, etc.). (Optional)
+        If you want to have the variable size in human readable format (Kb, Mb, etc.). (Optional)
     }
     \item{sortby}{
         The name of a column that you wish to sort the output with. If not specified the result will be sorted by "size". Valid options are "name", "class", "size" or "detail". (Optional)
@@ -43,12 +43,12 @@
 }
 \details{
     %%  ~~ If necessary, more details than the description above ~~
-    This function is a quick way to have some basic information about a list of variables. By modifying and changing the default parameters, you can narrow down the variables you are investigating. The main objective of this fuction is providing the following information about the variables in an easy and intuitive way:
+    This function is a quick way to have some basic information about a list of variables. By modifying and changing the default parameters, you can narrow down the variables you are investigating. The main objective of this function is providing the following information about the variables in an easy and intuitive way:
     class
     size (amount of memory the variable has occupied)
-    detail (dimention for data.frame and matrices and length of vectors)
+    detail (dimension for data.frame and matrices and length of vectors)
 
-    In case the variable is a matrix or data.frame, in detail column the dimention will be provided, if it is a vector, the length will be reported, otherwise you will see NA in detail column for that specific variable.
+    In case the variable is a matrix or data.frame, in detail column the dimension will be provided, if it is a vector, the length will be reported, otherwise you will see NA in detail column for that specific variable.
 
     This function is usually very quick but in case of having many variables in the environment, it might take some time, hence a progressbar is implemented to inform user about the process.
 }
@@ -58,7 +58,7 @@
     %%  \item{comp1 }{Description of 'comp1'}
     %%  \item{comp2 }{Description of 'comp2'}
     %% ...
-    The output will be a sorted data.frame with 4 columns. The "name" column contains the name of each variable, column "class" contains the class of each variable, columns "size" show the amount of memory the variable is occupying (it can be configured to be in bytes or human readable format. for this use the human.readable parameter.) and "detail" column includes variable-specific information (for matrices and data.frames the dimention and for vectors their list will be reported.)
+    The output will be a sorted data.frame with 4 columns. The "name" column contains the name of each variable, column "class" contains the class of each variable, columns "size" show the amount of memory the variable is occupying (it can be configured to be in bytes or human readable format. for this use the human.readable parameter.) and "detail" column includes variable-specific information (for matrices and data.frames the dimension and for vectors their list will be reported.)
 }
 %%\references{
     %% ~put references to the literature/web site here ~

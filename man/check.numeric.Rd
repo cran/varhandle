@@ -1,7 +1,7 @@
 \name{check.numeric}
 \alias{check.numeric}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{Check the vector's possiblity to convert to numeric}
+\title{Check the vector's possibility to convert to numeric}
 \description{
     %%  ~~ A concise (1-5 lines) description of what the function does. ~~
     This function gets a character or factor vector and checks if all the value can be safely converted to numeric.
@@ -17,7 +17,7 @@
         The character vector or factor vector. (Mandatory)
     }
     \item{na.rm}{
-        logical. Should the function ignore NA? Default value is FLASE since NA can be converted to numeric. (Optional)
+        logical. Should the function ignore NA? Default value is FALSE since NA can be converted to numeric. (Optional)
     }
     \item{only.integer}{
         logical. Only check for integers and do not accept floating point. Default value is FALSE. (Optional)
@@ -31,11 +31,11 @@
 }
 \details{
     %%  ~~ If necessary, more details than the description above ~~
-    This function checks if it is safe to convert the vector to numeric and this conversion will not end up in producing NA. In nutshell this function tries to mak sure provided vector contains numbers but in a non-numeric class. see example for better understanding.
+    This function checks if it is safe to convert the vector to numeric and this conversion will not end up in producing NA. In nutshell this function tries to make sure provided vector contains numbers but in a non-numeric class. See example for better understanding.
 
-    This function can be configured to only accept integer numbers (by setting the argument only.integer to TRUE). It can also ignore NA values (na.rm argument) and ignore heading/tailing whitespaces (ignore.whitespace argument).
+    This function can be configured to only accept integer numbers and ignoring those with decimal point (by setting the argument `only.integer` to `TRUE`). It can also ignore NA values (`na.rm` argument) and ignore heading/tailing whitespaces (`ignore.whitespace` argument).
 
-    There is also room to manually define exceptions to be concidered as numbers (exceptions argument).
+    There is also room to manually define exceptions to be considered as numbers (exceptions argument).
 }
 \value{
     %%  ~Describe the value returned
@@ -44,9 +44,9 @@
     %%  \item{comp2 }{Description of 'comp2'}
     %% ...
     The function return a logical vector. TRUE for all the elements in the given vector if they are safe to be converted into numeric in R (does not turned into NA).
-    Remember that "" and "   " can be converted to numeric safely (without getting the "NAs introduced by coercion" error), but their value would be NA.
+    Remember that `""` and `"   "` can be converted to numeric safely (without getting the "NAs introduced by coercion" error), but their value would be NA.
 
-    In case of a integer, numric or logical vector, the function simply returns all TRUE logical vector.
+    In case of a integer, numeric or logical vector, the function simply returns all TRUE logical vector.
 }
 %%\references{
 %%    ~put references to the literature/web site here ~
@@ -86,7 +86,7 @@
        "90000", "-10", "+11", "12-", "--13", "++14", NA, "",
        " 7 ", "   ", "8e2", "8.6e-10", "-8.6e+10", "e3")
 
-    # show in propper format
+    # show in proper format
     print(data.frame(value=b, check.numeric=check.numeric(b), converted=as.numeric(b)))
         #       value check.numeric converted
         # 1         1          TRUE   1.0e+00

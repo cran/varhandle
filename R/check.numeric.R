@@ -35,23 +35,29 @@ check.numeric <- function(v = NULL, na.rm = FALSE, only.integer = FALSE,
                 }
             }
         }
-
-        # if the na.rm is NOT a single TRUE or FALSE
-        if (!is.logical(na.rm) | length(na.rm) != 1) {
-            # complain
-            stop("The parameter \"na.rm\" should be either TRUE or FALSE.")
+        
+        
+        #-------[ na.rm ]-------#
+        {
+            # if the na.rm is NOT a single TRUE or FALSE
+            if (!is.logical(na.rm) | length(na.rm) != 1) {
+                # complain
+                stop("The parameter \"na.rm\" should be either TRUE or FALSE.")
+            }
         }
-
-
-
-        # if the ignore.whitespace is NOT a single TRUE or FALSE
-        if (!is.logical(ignore.whitespace) | length(ignore.whitespace) != 1) {
-            # complain
-            stop("The parameter \"ignore.whitespace\" should be either TRUE or FALSE.")
+        
+        
+        #-------[ ignore.whitespace ]-------#
+        {
+            # if the ignore.whitespace is NOT a single TRUE or FALSE
+            if (!is.logical(ignore.whitespace) | length(ignore.whitespace) != 1) {
+                # complain
+                stop("The parameter \"ignore.whitespace\" should be either TRUE or FALSE.")
+            }
         }
     }
-
-
+    
+    
     #----[ pre-processing ]----#
     {
         # convert to character if it is vector
@@ -59,24 +65,22 @@ check.numeric <- function(v = NULL, na.rm = FALSE, only.integer = FALSE,
             # convert to character
             v <- as.character(v)
         }
-
+        
+        
         # if user wants to ignore NAs
         if (na.rm) {
-            # if it has some NAs
-            if (any(is.na(v))) {
-                # remove NAs
-                v <- v[-pin.na(v)]
-            }
+            v <- stats::na.omit(v)
         }
-
+        
+        
         # if user wants to ignore leading or tailing white space
         if (ignore.whitespace) {
-            # substitute whitespaces in the begining and at the ending of each item in v
+            # substitute whitespaces in the beginning and at the ending of each item in v
             v <- gsub("^\\s+|\\s+$", "", v)
         }
     }
-
-
+    
+    
     #----[ processing ]----#
     {
         # if user wants to only detect integers
@@ -98,14 +102,15 @@ check.numeric <- function(v = NULL, na.rm = FALSE, only.integer = FALSE,
             # turn their output value to TRUE
             output[exception_index] <- TRUE
         }
-
+        
+        
         # if user wants to keep NA
         if (!na.rm) {
             # NAs are marked as FALSE by grepl and we replace it with TRUE instead
             output[is.na(v)] <- TRUE
         }
-
-
+        
+        
         # return the result
         return(output)
     }
